@@ -51,7 +51,7 @@ Try to finish within 3 hours. ⏰
    ```
 4. Design Link: [Figma Design](https://www.figma.com/design/Tar7tYkKqTuaFdGQFgGthy/Technical-Assessment?node-id=0-1&t=F0fzk15QtPDufiX4-1)
 5. **Relevant AirOps Links**:
-    - [Workflow quick start](https://docs.airops.com/getting-started/readme/workflow-quick-start)
+    - [Building Your First Workflow](https://docs.airops.com/getting-started/readme/building-your-first-workflow)
     - [Client SDK](https://github.com/airopshq/airops-js)
     - [API](https://docs.airops.com/workflow-execution/api)
 
