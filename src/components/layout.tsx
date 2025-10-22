@@ -38,7 +38,7 @@ const Header = ({ children }: Layout.Header) => {
 };
 
 const Content = ({ children }: Layout.Content) => {
-  return <main className="[grid-area:content] p-4">{children}</main>;
+  return <main className="[grid-area:content] py-4 px-5">{children}</main>;
 };
 
 export const Layout = {
