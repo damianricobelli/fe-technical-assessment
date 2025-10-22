@@ -1,3 +1,4 @@
+import { Breadcrumb } from "./components/header/breadcrumb";
 import { Layout } from "./components/layout";
 import { Menu } from "./components/sidebar/menu";
 import { NewWorkflowDialog } from "./components/sidebar/new-workflow-dialog";
@@ -12,7 +13,7 @@ function App() {
         <Menu />
       </Layout.Sidebar>
       <Layout.Header>
-        <span>Header</span>
+        <Breadcrumb />
       </Layout.Header>
       <Layout.Content>
         <span>Content</span>

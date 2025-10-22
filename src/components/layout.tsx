@@ -31,7 +31,7 @@ const Sidebar = ({ children }: Layout.Sidebar) => {
 
 const Header = ({ children }: Layout.Header) => {
   return (
-    <header className="[grid-area:header] flex justify-between items-center p-4 border-b border-border">
+    <header className="[grid-area:header] flex justify-between items-center h-20 px-5 border-b border-border">
       {children}
     </header>
   );
