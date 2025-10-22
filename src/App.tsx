@@ -1,3 +1,4 @@
+import { Datatable } from "./components/content/data-table";
 import { Breadcrumb } from "./components/header/breadcrumb";
 import { SearchInput } from "./components/header/search-input";
 import { SortSelect } from "./components/header/sort-select";
@@ -22,7 +23,7 @@ function App() {
         </div>
       </Layout.Header>
       <Layout.Content>
-        <span>Content</span>
+        <Datatable />
       </Layout.Content>
     </Layout.Root>
   );
