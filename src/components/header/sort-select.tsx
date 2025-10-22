@@ -48,7 +48,6 @@ export const SortSelect = () => {
 
       <select
         className="absolute inset-0 opacity-0 cursor-pointer"
-        value={sort}
         defaultValue={DEFAULT_SORT}
         onChange={(e) => setSort(e.target.value as Sort)}
       >
