@@ -5,6 +5,27 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -13,7 +34,8 @@
   /* Colors */
   --color-avatar: #adabff;
   --color-border: #ecedef;
-  --color-primary: #09090b;
+  --color-black: #09090b;
+  --color-primary: #000000;
   --color-secondary: #565656;
   --color-tertiary: #828282;
   --color-lilac: #d27dff;
@@ -27,4 +49,43 @@
   body {
     font-family: var(--font-inter);
   }
+}
+
+@utility text-menu-item-medium {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-secondary);
+}
+
+@utility text-body-xs-regular {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-primary);
+}
+@utility text-body-xs-semibold {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+@utility text-body-sm-medium {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+}
+@utility text-body-sm-semibold {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+@utility text-body-xl-bold {
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: -2%;
 }
