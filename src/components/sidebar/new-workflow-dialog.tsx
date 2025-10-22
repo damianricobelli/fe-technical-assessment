@@ -9,7 +9,7 @@ export const NewWorkflowDialog = () => {
         className={cx(
           "flex items-center justify-center gap-1.5",
           "px-2 py-1 rounded-md border border-border",
-          "font-bold text-body-xs-semibold",
+          "text-body-xs-semibold shadow-xs",
           "hover:bg-border transition-colors duration-200",
           "appearance-none outline-none",
           "focus:ring-2 focus:ring-blue",
