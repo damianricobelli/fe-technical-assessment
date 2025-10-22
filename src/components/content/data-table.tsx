@@ -1,36 +1,155 @@
+import { Edit2Icon, Trash2Icon } from "lucide-react";
+import { Dialog } from "../dialog";
+import { TagsBadge } from "./tags-badge";
+
 export const Datatable = () => {
   return (
     <div className="relative w-full overflow-x-auto">
       <table className="w-full caption-bottom text-sm">
         <thead className="py-4">
           <tr className="border-b border-border text-body-sm-medium [&_th]:pb-4 [&_th]:text-left">
-            <th className="w-1/3">Type</th>
-            <th className="w-1/3">Name</th>
-            <th className="w-[120px]">Tags</th>
-            <th className="w-[140px]">Last Updated</th>
+            <th className="w-[100px]">Type</th>
+            <th className="w-1/2">Name</th>
+            <th className="w-[100px]">Tags</th>
+            <th className="w-[100px]">Last Updated</th>
             <th className="w-[80px]">Actions</th>
           </tr>
         </thead>
         <tbody className="[&_tr:last-child]:border-0">
-          <tr className="border-b border-border [&_td]:py-4 [&_td]:align-middle [&_td]:whitespace-nowrap">
-            <td>
-              <span>Test</span>
-            </td>
-            <td>
-              <span>Test</span>
-            </td>
-            <td>
-              <span>Test</span>
-            </td>
-            <td>
-              <span>Test</span>
-            </td>
-            <td>
-              <span>Test</span>
-            </td>
-          </tr>
+          {mockData.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border [&_td]:py-4 [&_td]:align-middle [&_td]:whitespace-nowrap"
+            >
+              <td>
+                <span className="text-body-xs-regular text-tertiary">
+                  {item.type}
+                </span>
+              </td>
+              <td>
+                <span className="text-body-sm-medium">{item.name}</span>
+              </td>
+              <td>
+                <TagsBadge
+                  tags={item.tags.map((tag) => ({ id: tag, name: tag }))}
+                />
+              </td>
+              <td>
+                <span className="text-body-xs-regular text-tertiary">
+                  {item.lastUpdated}
+                </span>
+              </td>
+              <td>
+                <div className="flex items-center gap-2">
+                  <Dialog.Root>
+                    <Dialog.Trigger className="bg-black/5 rounded-md p-1.5">
+                      <Edit2Icon className="size-3 cursor-pointer" />
+                    </Dialog.Trigger>
+                    <Dialog.Content>
+                      <h2 className="text-lg font-bold">Edit Workflow</h2>
+                      <p className="text-sm text-secondary">
+                        Edit the workflow description.
+                      </p>
+                    </Dialog.Content>
+                  </Dialog.Root>
+                  <Dialog.Root>
+                    <Dialog.Trigger className="bg-black/5 rounded-md p-1.5">
+                      <Trash2Icon className="size-3 cursor-pointer" />
+                    </Dialog.Trigger>
+                    <Dialog.Content>
+                      <h2 className="text-lg font-bold">Delete Workflow</h2>
+                      <p className="text-sm text-secondary">
+                        Are you sure you want to delete this workflow?
+                      </p>
+                      <div className="flex justify-end gap-2 mt-4">
+                        <button className="px-2 py-1 rounded-md border border-red-500 text-red-500 text-body-xs-regular">
+                          Delete
+                        </button>
+                        <button className="px-2 py-1 rounded-md border border-black/10 bg-black/5 text-black/50 text-body-xs-regular">
+                          Cancel
+                        </button>
+                      </div>
+                    </Dialog.Content>
+                  </Dialog.Root>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
+
+const mockData = [
+  {
+    id: 1,
+    type: "Workflow",
+    name: "Article Writer",
+    tags: ["Tag 1", "Tag 2"],
+    lastUpdated: "Today",
+  },
+  {
+    id: 2,
+    type: "Agent",
+    name: "Article Writer - Subproj",
+    tags: ["Test"],
+    lastUpdated: "This Week",
+  },
+  {
+    id: 3,
+    type: "Workflow",
+    name: "Content Idea Generator",
+    tags: [],
+    lastUpdated: "Yesterday",
+  },
+  {
+    id: 4,
+    type: "Workflow",
+    name: "Workflow Name",
+    tags: [],
+    lastUpdated: "2 Days Ago",
+  },
+  {
+    id: 5,
+    type: "Workflow",
+    name: "Workflow Name",
+    tags: [],
+    lastUpdated: "Yesterday",
+  },
+  {
+    id: 6,
+    type: "Agent",
+    name: "Workflow Name",
+    tags: [],
+    lastUpdated: "Today",
+  },
+  {
+    id: 7,
+    type: "Workflow",
+    name: "Workflow Name",
+    tags: [],
+    lastUpdated: "Yesterday",
+  },
+  {
+    id: 8,
+    type: "Workflow",
+    name: "Workflow Name",
+    tags: ["Content Creation"],
+    lastUpdated: "Today",
+  },
+  {
+    id: 9,
+    type: "Workflow",
+    name: "Workflow Name",
+    tags: ["Content Creation"],
+    lastUpdated: "Today",
+  },
+  {
+    id: 10,
+    type: "Agent",
+    name: "Workflow Name",
+    tags: ["Content Creation"],
+    lastUpdated: "Today",
+  },
+];

@@ -39,7 +39,7 @@ export const SearchInput = () => {
           "w-full pl-7 text-sm appearance-none outline-none",
           "px-2 py-1 rounded-md border border-black/15",
           "shadow-sm focus:ring-2 focus:ring-blue",
-          "text-sm text-gray-700"
+          "text-body-xs-regular placeholder:text-tertiary"
         )}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
