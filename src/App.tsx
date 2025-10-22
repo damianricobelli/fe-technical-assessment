@@ -1,9 +1,19 @@
+import { Layout } from "./components/layout";
+
 function App() {
   return (
-    <div className="text-lg">
-      Technical assessment
-    </div>
-  )
+    <Layout.Root>
+      <Layout.Sidebar>
+        <span>Sidebar menu</span>
+      </Layout.Sidebar>
+      <Layout.Header>
+        <span>Header</span>
+      </Layout.Header>
+      <Layout.Content>
+        <span>Content</span>
+      </Layout.Content>
+    </Layout.Root>
+  );
 }
 
-export default App
+export default App;
