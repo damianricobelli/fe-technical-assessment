@@ -2,6 +2,10 @@ import React from "react";
 import { cx } from "class-variance-authority";
 import { XIcon } from "lucide-react";
 
+// This component was not strictly necessary for the challenge,
+// but I thought it was a good opportunity to show how to use a native dialog
+// without external libraries, just using the browser API.
+
 const DialogContext = React.createContext<Dialog.ContextValue | null>(null);
 
 const useDialogContext = () => {

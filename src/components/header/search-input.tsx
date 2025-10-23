@@ -13,6 +13,9 @@ const getInitialSearchQuery = () => {
   return url.searchParams.get("q") || "";
 };
 
+// The idea of using query params was not necessary for the challenge,
+// but I thought it would be good to add this detail as part of my ideas
+// on how to handle this kind of situation on a dashboard app with filters
 export const SearchInput = () => {
   const [searchQuery, setSearchQuery] = React.useState(getInitialSearchQuery);
   const debouncedQuery = useDebounce(searchQuery, 500);
