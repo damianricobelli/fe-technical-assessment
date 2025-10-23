@@ -27,6 +27,9 @@ export const Datatable = () => {
 
   const workflows = data.data;
 
+  // Ideally, we would be able to listen for an event like the
+  // URL pushstate in order to filter the table data according
+  // to the search input and sort select.
   return (
     <div className="relative w-full overflow-x-auto">
       <table className="w-full caption-bottom text-sm">
