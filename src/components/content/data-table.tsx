@@ -1,16 +1,29 @@
-import { Edit2Icon, Trash2Icon } from "lucide-react";
+import {
+  AlertCircleIcon,
+  Edit2Icon,
+  Loader2Icon,
+  Trash2Icon,
+} from "lucide-react";
 import { Dialog } from "../dialog";
 import { TagsBadge } from "./tags-badge";
 import { useFetcher } from "../../hooks/use-fetcher";
 import { fetchFakeWorkflows, WorkflowsResponse } from "./fetch-fake-workflows";
+import { cx } from "class-variance-authority";
 
 export const Datatable = () => {
+  // We could have used something as simple as a useEffect,
+  // but due to the multiple problems it can have with race
+  // conditions and how outdated it feels to do it that way
+  // when there are more robust solutions available, I decided
+  // to create a mini useFetcher (similar to the idea behind
+  // loaders in react-router) to be able to fetch data
+  // without useEffect.
   const { data, loading, error } =
     useFetcher<WorkflowsResponse>(fetchFakeWorkflows);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data) return <div>No data</div>;
+  if (loading) return <Status.Loading />;
+  if (error) return <Status.Error error={error.message} />;
+  if (!data) return <Status.NoData />;
 
   const workflows = data.data;
 
@@ -95,3 +108,41 @@ export const Datatable = () => {
     </div>
   );
 };
+
+const LoadingStatus = () => {
+  return (
+    <div className={statusStyle}>
+      <span className="flex items-center gap-2">
+        <Loader2Icon className="size-8 animate-spin" />
+        <span className="text-lg">Loading...</span>
+      </span>
+    </div>
+  );
+};
+
+const ErrorStatus = ({ error }: { error: string }) => {
+  return (
+    <div className={statusStyle}>
+      <span className="flex items-center gap-2 text-red-500">
+        <AlertCircleIcon className="size-10" />
+        <span className="text-xl">Error: {error}</span>
+      </span>
+    </div>
+  );
+};
+
+const NoDataStatus = () => {
+  return (
+    <div className={statusStyle}>
+      <span className="text-lg">No data</span>
+    </div>
+  );
+};
+
+const Status = {
+  Loading: LoadingStatus,
+  Error: ErrorStatus,
+  NoData: NoDataStatus,
+};
+
+const statusStyle = cx("grid place-items-center h-full");
