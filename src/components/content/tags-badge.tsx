@@ -23,13 +23,11 @@ export const TagsBadge = ({ tags }: TagsBadge.Props) => {
     return (
       <div className={cx(baseTagsBadgeStyle, "text-body-xs-semibold")}>
         <div className="flex items-center gap-1">
-          {tags.map((tag, index) => (
+          {tags.map((tag) => (
             <span
               key={tag.id}
-              className={cx(
-                "size-2 rounded-xs",
-                index === 0 ? "bg-blue" : "bg-lilac"
-              )}
+              className="size-2 rounded-xs"
+              style={{ backgroundColor: tag.color }}
             />
           ))}
         </div>
@@ -40,7 +38,10 @@ export const TagsBadge = ({ tags }: TagsBadge.Props) => {
 
   return (
     <div className={cx(baseTagsBadgeStyle, "text-body-xs-semibold")}>
-      <span className="size-2 rounded-xs bg-blue" />
+      <span
+        className="size-2 rounded-xs"
+        style={{ backgroundColor: tags[0].color }}
+      />
       <span>{tags[0].name}</span>
     </div>
   );
@@ -55,6 +56,7 @@ namespace TagsBadge {
     tags: {
       id: string;
       name: string;
+      color: string;
     }[];
   };
 }

@@ -1,8 +1,19 @@
 import { Edit2Icon, Trash2Icon } from "lucide-react";
 import { Dialog } from "../dialog";
 import { TagsBadge } from "./tags-badge";
+import { useFetcher } from "../../hooks/use-fetcher";
+import { fetchFakeWorkflows, WorkflowsResponse } from "./fetch-fake-workflows";
 
 export const Datatable = () => {
+  const { data, loading, error } =
+    useFetcher<WorkflowsResponse>(fetchFakeWorkflows);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data) return <div>No data</div>;
+
+  const workflows = data.data;
+
   return (
     <div className="relative w-full overflow-x-auto">
       <table className="w-full caption-bottom text-sm">
@@ -16,7 +27,7 @@ export const Datatable = () => {
           </tr>
         </thead>
         <tbody className="[&_tr:last-child]:border-0">
-          {mockData.map((item) => (
+          {workflows.map((item) => (
             <tr
               key={item.id}
               className="border-b border-border [&_td]:py-4 [&_td]:align-middle [&_td]:whitespace-nowrap"
@@ -31,7 +42,11 @@ export const Datatable = () => {
               </td>
               <td>
                 <TagsBadge
-                  tags={item.tags.map((tag) => ({ id: tag, name: tag }))}
+                  tags={item.tags.map((tag) => ({
+                    id: tag.name,
+                    name: tag.name,
+                    color: tag.color,
+                  }))}
                 />
               </td>
               <td>
@@ -80,76 +95,3 @@ export const Datatable = () => {
     </div>
   );
 };
-
-const mockData = [
-  {
-    id: 1,
-    type: "Workflow",
-    name: "Article Writer",
-    tags: ["Tag 1", "Tag 2"],
-    lastUpdated: "Today",
-  },
-  {
-    id: 2,
-    type: "Agent",
-    name: "Article Writer - Subproj",
-    tags: ["Test"],
-    lastUpdated: "This Week",
-  },
-  {
-    id: 3,
-    type: "Workflow",
-    name: "Content Idea Generator",
-    tags: [],
-    lastUpdated: "Yesterday",
-  },
-  {
-    id: 4,
-    type: "Workflow",
-    name: "Workflow Name",
-    tags: [],
-    lastUpdated: "2 Days Ago",
-  },
-  {
-    id: 5,
-    type: "Workflow",
-    name: "Workflow Name",
-    tags: [],
-    lastUpdated: "Yesterday",
-  },
-  {
-    id: 6,
-    type: "Agent",
-    name: "Workflow Name",
-    tags: [],
-    lastUpdated: "Today",
-  },
-  {
-    id: 7,
-    type: "Workflow",
-    name: "Workflow Name",
-    tags: [],
-    lastUpdated: "Yesterday",
-  },
-  {
-    id: 8,
-    type: "Workflow",
-    name: "Workflow Name",
-    tags: ["Content Creation"],
-    lastUpdated: "Today",
-  },
-  {
-    id: 9,
-    type: "Workflow",
-    name: "Workflow Name",
-    tags: ["Content Creation"],
-    lastUpdated: "Today",
-  },
-  {
-    id: 10,
-    type: "Agent",
-    name: "Workflow Name",
-    tags: ["Content Creation"],
-    lastUpdated: "Today",
-  },
-];
