@@ -14,9 +14,7 @@ export const TagsBadge = ({ tags }: TagsBadge.Props) => {
 
 const NoTagsBadge = () => {
   return (
-    <div
-      className={cx(baseTagsBadgeStyle, "text-body-xs-semibold text-[#808593]")}
-    >
+    <div className={cx(baseTagsBadgeStyle, "text-[#808593]")}>
       <PlusIcon className="size-3" />
       <span>Add Tag</span>
     </div>
@@ -25,7 +23,7 @@ const NoTagsBadge = () => {
 
 const MultipleTagsBadge = ({ tags }: { tags: TagsBadge.Tag[] }) => {
   return (
-    <div className={cx(baseTagsBadgeStyle, "text-body-xs-semibold")}>
+    <div className={baseTagsBadgeStyle}>
       <div className="flex items-center gap-1">
         {tags.map((tag) => (
           <span
@@ -42,7 +40,7 @@ const MultipleTagsBadge = ({ tags }: { tags: TagsBadge.Tag[] }) => {
 
 const SingleTagBadge = ({ tag }: { tag: TagsBadge.Tag }) => {
   return (
-    <div className={cx(baseTagsBadgeStyle, "text-body-xs-semibold")}>
+    <div className={baseTagsBadgeStyle}>
       <span
         className="size-2 rounded-xs"
         style={{ backgroundColor: tag.color }}
@@ -59,7 +57,7 @@ const TagsBadgeComponent = {
 };
 
 const baseTagsBadgeStyle = cx(
-  "inline-flex items-center gap-1.5 rounded-full border border-black/10 px-2.5 py-1.5 select-none"
+  "inline-flex items-center gap-1.5 rounded-full border border-black/10 px-2.5 py-1.5 select-none text-body-xs-semibold"
 );
 
 namespace TagsBadge {
