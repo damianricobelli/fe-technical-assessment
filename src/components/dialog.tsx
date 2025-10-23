@@ -9,7 +9,7 @@ import { XIcon } from "lucide-react";
 const DialogContext = React.createContext<Dialog.ContextValue | null>(null);
 
 const useDialogContext = () => {
-  const ctx = React.useContext(DialogContext);
+  const ctx = React.use(DialogContext);
   if (!ctx) throw new Error("Dialog.* must be used inside <Dialog.Root>");
   return ctx;
 };
