@@ -3,7 +3,7 @@ import React from "react";
 type Fetcher<T> = (signal: AbortSignal) => Promise<T>;
 
 export function useFetcher<T>(fetcher: Fetcher<T>) {
-  const cache = React.useRef<T | null>(null);
+  const cache = React.useRef<T>(null);
 
   const [data, setData] = React.useState<T | null>(null);
   const [loading, setLoading] = React.useState(false);
