@@ -8,9 +8,9 @@ const menuItems = [
     href: "/",
   },
   {
-    label: "Monitoring Dashboard",
+    label: "Monitoring",
     icon: <ChartNoAxesColumn className="size-3" />,
-    href: "/monitoring-dashboard",
+    href: "/monitoring",
   },
   {
     label: "Settings",
