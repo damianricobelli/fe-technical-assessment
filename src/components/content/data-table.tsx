@@ -72,36 +72,8 @@ export const Datatable = () => {
               </td>
               <td>
                 <div className="flex items-center gap-2">
-                  <Dialog.Root>
-                    <Dialog.Trigger className="bg-black/5 rounded-md p-1.5">
-                      <Edit2Icon className="size-3 cursor-pointer" />
-                    </Dialog.Trigger>
-                    <Dialog.Content>
-                      <h2 className="text-lg font-bold">Edit Workflow</h2>
-                      <p className="text-sm text-secondary">
-                        Edit the workflow description.
-                      </p>
-                    </Dialog.Content>
-                  </Dialog.Root>
-                  <Dialog.Root>
-                    <Dialog.Trigger className="bg-black/5 rounded-md p-1.5">
-                      <Trash2Icon className="size-3 cursor-pointer" />
-                    </Dialog.Trigger>
-                    <Dialog.Content>
-                      <h2 className="text-lg font-bold">Delete Workflow</h2>
-                      <p className="text-sm text-secondary">
-                        Are you sure you want to delete this workflow?
-                      </p>
-                      <div className="flex justify-end gap-2 mt-4">
-                        <button className="px-2 py-1 rounded-md border border-red-500 text-red-500 text-body-xs-regular">
-                          Delete
-                        </button>
-                        <button className="px-2 py-1 rounded-md border border-black/10 bg-black/5 text-black/50 text-body-xs-regular">
-                          Cancel
-                        </button>
-                      </div>
-                    </Dialog.Content>
-                  </Dialog.Root>
+                  <EditWorkflowDialog />
+                  <DeleteWorkflowDialog />
                 </div>
               </td>
             </tr>
@@ -109,6 +81,44 @@ export const Datatable = () => {
         </tbody>
       </table>
     </div>
+  );
+};
+
+const EditWorkflowDialog = () => {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger className="bg-black/5 rounded-md p-1.5">
+        <Edit2Icon className="size-3 cursor-pointer" />
+      </Dialog.Trigger>
+      <Dialog.Content>
+        <h2 className="text-lg font-bold">Edit Workflow</h2>
+        <p className="text-sm text-secondary">Edit the workflow description.</p>
+      </Dialog.Content>
+    </Dialog.Root>
+  );
+};
+
+const DeleteWorkflowDialog = () => {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger className="bg-black/5 rounded-md p-1.5">
+        <Trash2Icon className="size-3 cursor-pointer" />
+      </Dialog.Trigger>
+      <Dialog.Content>
+        <h2 className="text-lg font-bold">Delete Workflow</h2>
+        <p className="text-sm text-secondary">
+          Are you sure you want to delete this workflow?
+        </p>
+        <div className="flex justify-end gap-2 mt-4">
+          <button className="px-2 py-1 rounded-md border border-red-500 text-red-500 text-body-xs-regular">
+            Delete
+          </button>
+          <button className="px-2 py-1 rounded-md border border-black/10 bg-black/5 text-black/50 text-body-xs-regular">
+            Cancel
+          </button>
+        </div>
+      </Dialog.Content>
+    </Dialog.Root>
   );
 };
 
