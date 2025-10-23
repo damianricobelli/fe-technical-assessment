@@ -48,6 +48,13 @@ const Trigger = ({ children, className }: Dialog.TriggerProps) => {
 const Content = ({ children, className }: Dialog.ContentProps) => {
   const { dialogRef, closeDialog } = useDialogContext();
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    if (!dialogRef.current) return;
+    if (e.target === dialogRef.current) {
+      closeDialog();
+    }
+  };
+
   return (
     <dialog
       ref={dialogRef}
@@ -58,6 +65,7 @@ const Content = ({ children, className }: Dialog.ContentProps) => {
         className
       )}
       onClose={closeDialog}
+      onClick={handleBackdropClick}
     >
       {children}
       <button onClick={closeDialog} className="absolute top-2 right-2">
@@ -75,7 +83,7 @@ export const Dialog = {
 
 export namespace Dialog {
   export type ContextValue = {
-    dialogRef: React.Ref<HTMLDialogElement>;
+    dialogRef: React.RefObject<HTMLDialogElement | null>;
     open: boolean;
     openDialog: () => void;
     closeDialog: () => void;
